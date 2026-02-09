@@ -1,27 +1,28 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { ChevronDown, RefreshCw, Shield } from "lucide-react";
 import SectionHeader from "@/components/SectionHeader";
 import CTABlock from "@/components/CTABlock";
 
 const phases = [
   {
-    label: "Phase 1: Discovery",
+    label: "Phase 1: You Talk, We Listen",
     week: "Week 1",
-    time: "Your Time: 30 minutes",
+    time: "30 minutes",
     desc: "One 30-minute call. You walk us through your week—what's repetitive, what's annoying, what eats time you don't have. We identify the highest-value automation and scope the first agent.",
   },
   {
-    label: "Phase 2: Build",
+    label: "Phase 2: We Disappear and Build",
     week: "Weeks 2–3",
-    time: "Your Time: 0 hours",
-    desc: "We disappear and build. You'll get a few async questions via email or Slack—that's it. We install the agent, integrate it with your systems, train it on your data, and test edge cases.",
+    time: "0 hours from you",
+    desc: "You'll get a few async questions via email or Slack—that's it. We install the agent, integrate it with your systems, train it on your data, and test edge cases.",
   },
   {
-    label: "Phase 3: Evolve",
+    label: "Phase 3: Your Agent Gets Smarter Over Time",
     week: "Ongoing",
-    time: "Your Time: 15 min/month",
+    time: "15 min/month",
     desc: "Your agent goes live. We monitor performance, fix issues, and upgrade capabilities as AI improves. Monthly check-in calls. Slack access for quick questions. When you're ready, we add more agents.",
   },
 ];
@@ -64,9 +65,9 @@ const trustLevels = [
   },
   {
     period: "Month 2+",
-    level: "Full autonomy (your choice)",
+    level: "Autopilot (your call)",
     width: "w-1/3",
-    desc: "Full autonomy on tasks you trust. You can tighten or loosen controls anytime.",
+    desc: "You decide what runs on autopilot. Adjust anytime.",
   },
 ];
 
@@ -122,13 +123,12 @@ export default function HowItWorksPage() {
       <header className="pt-40 pb-24 px-6">
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-5xl md:text-6xl font-[family-name:var(--font-inter)] font-medium text-navy tracking-tight leading-[1.1]">
-            You Do Very Little. We Do Everything.
+            45 Minutes From You. A Working AI Agent From Us.
           </h1>
           <p className="mt-8 text-xl md:text-2xl text-charcoal leading-relaxed max-w-2xl mx-auto">
-            Most AI projects require months of your time, endless meetings, and
-            a tech team you don&apos;t have. Ours don&apos;t. You give us 45
-            minutes total. We handle the rest&mdash;and you don&apos;t pay until
-            it&apos;s working.
+            No tech team required. No learning curve. No disruption to your
+            operations. One 30-minute call, two weeks of our time, and you have
+            a working AI agent&mdash;free until it&apos;s saving you hours.
           </p>
         </div>
       </header>
@@ -136,7 +136,7 @@ export default function HowItWorksPage() {
       {/* 3-Phase Process */}
       <section className="py-24 bg-surface px-6">
         <div className="max-w-5xl mx-auto text-center">
-          <SectionHeader subtitle="The Process" title="How We Work Together" />
+          <SectionHeader subtitle="The Process" title="Three Phases. 45 Minutes of Your Time. That's It." />
 
           <div className="grid md:grid-cols-3 gap-12 relative">
             {/* Connecting line */}
@@ -159,13 +159,22 @@ export default function HowItWorksPage() {
               </div>
             ))}
           </div>
+
+          <p className="mt-10 text-center">
+            <Link
+              href="/case-studies"
+              className="text-teal font-[family-name:var(--font-inter)] font-medium text-lg underline underline-offset-4 hover:text-navy transition-colors"
+            >
+              See real results &rarr;
+            </Link>
+          </p>
         </div>
       </section>
 
       {/* You vs. We Table */}
       <section className="py-24 px-6 bg-white">
         <div className="max-w-4xl mx-auto">
-          <SectionHeader subtitle="The Math" title="Your Time vs. Our Time" />
+          <SectionHeader subtitle="The Math" title="Here's Where Your 45 Minutes Go" />
 
           <div className="overflow-x-auto">
             <table className="w-full border-collapse">
@@ -201,10 +210,28 @@ export default function HowItWorksPage() {
               Total your time to first working agent: 45 minutes.
             </p>
             <p className="mt-2 text-charcoal italic">
-              We&apos;re not being generous&mdash;we&apos;re being efficient.
-              The less you&apos;re involved, the faster we move.
+              That&apos;s not a pitch&mdash;it&apos;s the actual timeline from
+              first call to working agent.
             </p>
           </div>
+
+          <p className="mt-8 text-center">
+            <Link
+              href="/what-we-automate"
+              className="text-teal font-[family-name:var(--font-inter)] font-medium text-lg underline underline-offset-4 hover:text-navy transition-colors"
+            >
+              See what we automate &rarr;
+            </Link>
+          </p>
+        </div>
+      </section>
+
+      {/* Free First Agent Callout */}
+      <section className="py-16 px-6 bg-white">
+        <div className="max-w-3xl mx-auto text-center">
+          <p className="font-[family-name:var(--font-inter)] font-medium text-navy text-2xl">
+            Your first agent is free. You pay only after it&apos;s saving you time.
+          </p>
         </div>
       </section>
 
@@ -224,10 +251,10 @@ export default function HowItWorksPage() {
               obsolete in six months. That&apos;s our problem, not yours.
             </p>
             <p className="text-lg leading-relaxed max-w-2xl mx-auto mt-4">
-              When better models drop, we evaluate them. When new capabilities
-              emerge, we test them against your workflows. When upgrades make
-              sense, we implement them. You don&apos;t have to track the AI
-              landscape&mdash;that&apos;s what you&apos;re paying us for.
+              When the AI landscape shifts&mdash;and it will&mdash;we handle the
+              migration. Better models, new capabilities, smarter workflows.
+              Your agents get better over time without you lifting a finger.
+              That&apos;s what you&apos;re paying us for.
             </p>
             <p className="font-[family-name:var(--font-inter)] font-medium text-navy text-xl mt-6">
               Your agents get better over time. Automatically.
@@ -243,13 +270,13 @@ export default function HowItWorksPage() {
             <Shield className="text-teal" size={28} />
           </div>
           <SectionHeader
-            subtitle="Control"
-            title="You're Always in Control"
+            subtitle="Trust"
+            title="Trust Is Earned, Not Assumed"
           />
 
           <p className="text-center text-lg text-charcoal mb-12 max-w-2xl mx-auto -mt-8">
-            AI agents work best with human oversight&mdash;especially at the
-            start. Here&apos;s how we handle it:
+            Every agent starts supervised. As it proves itself, you decide how
+            much autonomy to grant:
           </p>
 
           <div className="space-y-6">
@@ -274,7 +301,16 @@ export default function HowItWorksPage() {
           </div>
 
           <p className="text-center mt-8 font-[family-name:var(--font-inter)] font-medium text-navy">
-            Nothing happens without your permission until you&apos;re ready.
+            Your agents move at the speed of your trust.
+          </p>
+
+          <p className="mt-8 text-center">
+            <Link
+              href="/case-studies"
+              className="text-teal font-[family-name:var(--font-inter)] font-medium text-lg underline underline-offset-4 hover:text-navy transition-colors"
+            >
+              How we&apos;ve done this for other businesses &rarr;
+            </Link>
           </p>
         </div>
       </section>
@@ -294,9 +330,9 @@ export default function HowItWorksPage() {
 
       {/* CTA Block */}
       <CTABlock
-        headline="Ready to Get Your Time Back?"
-        copy="45 minutes of your time. 2 weeks to a working agent. Zero payment until it's saving you hours."
-        primaryCTA="Start Risk-Free"
+        headline="45 Minutes to Your First Working Agent"
+        copy="One call. Two weeks. A working AI agent — free until it proves its value."
+        primaryCTA="Get Your First Agent Free"
         primaryHref="/get-started"
       />
     </div>
