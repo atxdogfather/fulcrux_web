@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Script from "next/script";
-import { Phone, Hammer, CheckCircle2, ShieldCheck, ChevronDown } from "lucide-react";
+import { Phone, Hammer, CheckCircle2, ShieldCheck, ChevronDown, Calendar } from "lucide-react";
 import SectionHeader from "@/components/SectionHeader";
 import CTABlock from "@/components/CTABlock";
 
@@ -75,6 +75,13 @@ function FAQItem({ q, a }: { q: string; a: string }) {
 export default function GetStartedPage() {
   return (
     <div className="min-h-screen bg-white text-charcoal">
+      {/* Calendly popup widget */}
+      <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />
+      <Script
+        src="https://assets.calendly.com/assets/external/widget.js"
+        strategy="afterInteractive"
+      />
+
       {/* Hero */}
       <header className="pt-40 pb-24 px-6">
         <div className="max-w-4xl mx-auto text-center">
@@ -85,6 +92,26 @@ export default function GetStartedPage() {
             One call. One automation. Zero risk. We&apos;ll identify the task
             eating most of your week, build an AI agent to handle it, and prove
             it works&mdash;before you pay a dime.
+          </p>
+          <button
+            onClick={() =>
+              (window as unknown as { Calendly: { initPopupWidget: (opts: { url: string }) => void } }).Calendly.initPopupWidget({
+                url: "https://calendly.com/matt-fulcrux/30min",
+              })
+            }
+            className="mt-10 inline-flex items-center gap-3 bg-teal text-white px-8 py-4 rounded-xl text-lg font-[family-name:var(--font-inter)] font-medium hover:bg-navy transition-colors"
+          >
+            <Calendar size={22} />
+            Book Your Discovery Call
+          </button>
+          <p className="mt-6 text-charcoal">
+            Prefer email? Reach out at{" "}
+            <a
+              href="mailto:hello@fulcrux.ai"
+              className="text-teal underline underline-offset-4 hover:text-navy transition-colors"
+            >
+              hello@fulcrux.ai
+            </a>
           </p>
         </div>
       </header>
@@ -162,38 +189,6 @@ export default function GetStartedPage() {
         </div>
       </section>
 
-      {/* Calendly Placeholder */}
-      <section className="py-24 px-6 bg-white">
-        <div className="max-w-3xl mx-auto text-center">
-          <SectionHeader subtitle="Book Now" title="Ready to Start?" />
-          <p className="text-lg text-charcoal mb-8 -mt-8">
-            Pick a time that works. 30 minutes, no prep required. We&apos;ll do
-            the heavy lifting&mdash;you just show up and walk us through your
-            week.
-          </p>
-
-          {/* Calendly embed */}
-          <div
-            className="calendly-inline-widget"
-            data-url="https://calendly.com/matt-fulcrux/30min"
-            style={{ minWidth: "320px", height: "700px" }}
-          />
-          <Script
-            src="https://assets.calendly.com/assets/external/widget.js"
-            strategy="lazyOnload"
-          />
-
-          <p className="text-charcoal">
-            Prefer email? Reach out at{" "}
-            <a
-              href="mailto:hello@fulcrux.ai"
-              className="text-teal underline underline-offset-4 hover:text-navy transition-colors"
-            >
-              hello@fulcrux.ai
-            </a>
-          </p>
-        </div>
-      </section>
 
       {/* FAQ */}
       <section className="py-24 bg-surface px-6">

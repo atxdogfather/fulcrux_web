@@ -14,9 +14,22 @@ const subjectOptions = [
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  const [error, setError] = useState(false);
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setSubmitted(true);
+    setError(false);
+    const form = e.currentTarget;
+    const res = await fetch("https://formspree.io/f/mpqjwjqp", {
+      method: "POST",
+      body: new FormData(form),
+      headers: { Accept: "application/json" },
+    });
+    if (res.ok) {
+      setSubmitted(true);
+    } else {
+      setError(true);
+    }
   }
 
   return (
@@ -128,6 +141,11 @@ export default function ContactPage() {
               >
                 Send Message
               </button>
+              {error && (
+                <p className="text-red-600 text-center mt-4">
+                  Something went wrong. Please try again or email us directly.
+                </p>
+              )}
             </form>
           )}
         </div>

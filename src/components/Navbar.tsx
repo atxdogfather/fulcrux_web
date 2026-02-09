@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 
@@ -19,13 +20,8 @@ export default function Navbar() {
   return (
     <nav className="fixed w-full bg-white/90 backdrop-blur-md z-50 border-b border-border">
       <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-2">
-          <div className="w-8 h-8 bg-navy rounded flex items-center justify-center">
-            <span className="text-white font-bold text-lg">F</span>
-          </div>
-          <span className="text-navy font-[family-name:var(--font-inter)] font-bold text-xl tracking-tight">
-            Fulcrux.ai
-          </span>
+        <Link href="/">
+          <Image src="/logo.png" alt="Fulcrux" width={160} height={40} priority />
         </Link>
 
         {/* Desktop Nav */}
